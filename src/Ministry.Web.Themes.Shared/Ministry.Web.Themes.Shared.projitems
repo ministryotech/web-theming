@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>88956069-4c83-4b13-bc5f-87b7ecae90ff</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Ministry.Web.Themes.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DependencyServiceManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HostTheme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HostThemeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IKeyedTheme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IThemeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeOptions.cs" />
+  </ItemGroup>
+</Project>
