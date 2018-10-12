@@ -23,6 +23,8 @@ Sample configuration...
         ],
         "DefaultThemeKey": "Main"
     }
+    
+Designed for Asp.Net Core, the project is available in discrete versions for Asp.Net Core 1.0 and 2.0 by making use of shared projects to share the core code.
 
 ## The Ministry of Technology Open Source Products
 Welcome to The Ministry of Technology open source products. All open source Ministry of Technology products are distributed under the MIT License for maximum re-usability. Details on more of our products and services can be found on our website at http://www.minotech.co.uk
