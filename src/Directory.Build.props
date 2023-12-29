@@ -1,0 +1,69 @@
+<Project>
+
+    <PropertyGroup>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <LangVersion>7.3</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AnalysisMode>Recommended</AnalysisMode>
+        <AnalysisModeGlobalization>None</AnalysisModeGlobalization>
+        <AnalysisModeSecurity>All</AnalysisModeSecurity>
+        <AnalysisModeMaintainability>All</AnalysisModeMaintainability>
+        <AnalysisLevel>6.0</AnalysisLevel>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>Library for supporting theming in web sites</Description>
+        <Authors>Keith Jackson</Authors>
+        <Company>Minotech Ltd. (The Ministry of Technology)</Company>
+        <Copyright>2024 Keith Jackson / The Ministry of Technology</Copyright>
+        <RepositoryUrl>https://github.com/ministryotech/web-theming.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <PackageReadMeFile>README.md</PackageReadMeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <!--<WarningsNotAsErrors></WarningsNotAsErrors>--><!--Enable this to allow some warnings-->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+        <None Include="..\..\README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\Ministry.Web.Themes.Shared\DependencyServiceManager.cs">
+            <Link>DependencyServiceManager.cs</Link>
+        </Compile>
+        <Compile Include="..\Ministry.Web.Themes.Shared\HostTheme.cs">
+            <Link>HostTheme.cs</Link>
+        </Compile>
+        <Compile Include="..\Ministry.Web.Themes.Shared\HostThemeManager.cs">
+            <Link>HostThemeManager.cs</Link>
+        </Compile>
+        <Compile Include="..\Ministry.Web.Themes.Shared\IKeyedTheme.cs">
+            <Link>IKeyedTheme.cs</Link>
+        </Compile>
+        <Compile Include="..\Ministry.Web.Themes.Shared\IThemeManager.cs">
+            <Link>IThemeManager.cs</Link>
+        </Compile>
+        <Compile Include="..\Ministry.Web.Themes.Shared\ThemeOptions.cs">
+            <Link>ThemeOptions.cs</Link>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+    
+</Project>

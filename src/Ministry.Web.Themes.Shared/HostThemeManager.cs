@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
 
 namespace Ministry.Web.Themes
 {
     /// <summary>
     /// Manages Theming
     /// </summary>
+    /// <seealso cref="IThemeManager"/>
+    /// <inheritdoc cref="IThemeManager"/>
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public class HostThemeManager : IThemeManager
     {
@@ -35,10 +37,7 @@ namespace Ministry.Web.Themes
 
         #endregion | Construction |
 
-        /// <summary>
-        /// Gets the host theme.
-        /// </summary>
-        /// <returns>A host theme.</returns>
+        /// <inheritdoc/>
         public HostTheme GetHostTheme()
         {
             var host = GetHost();
@@ -50,16 +49,10 @@ namespace Ministry.Web.Themes
                 ?? throw new InvalidOperationException("The 'DefaultThemeKey' configuration setting is missing or invalid.");
         }
 
-        /// <summary>
-        /// Gets the theme key.
-        /// </summary>
-        /// <returns>A theme key string.</returns>
+        /// <inheritdoc/>
         public string GetThemeKey() => GetHostTheme().Key;
 
-        /// <summary>
-        /// Gets the theme title.
-        /// </summary>
-        /// <returns>The theme title, or the key if no title is set.</returns>
+        /// <inheritdoc/>
         public string GetThemeTitle()
         {
             var theme = GetHostTheme();
@@ -72,7 +65,8 @@ namespace Ministry.Web.Themes
         /// Accesses the current host url.
         /// </summary>
         /// <returns>The current host url.</returns>
-        private string GetHost() => httpContextAccessor.HttpContext.Request.Host.ToString();
+        private string GetHost() 
+            => httpContextAccessor.HttpContext?.Request.Host.ToString();
 
         #endregion | Private Methods |
 

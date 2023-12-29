@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using NSubstitute;
-using System;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace Ministry.Web.Themes.Tests
@@ -10,14 +8,8 @@ namespace Ministry.Web.Themes.Tests
     [Trait("Category", "Themes")]
     public class HostThemeManagerTests : IDisposable
     {
-        private IHttpContextAccessor subContext;
-        private IOptions<ThemeOptions<HostTheme>> subOptions;
-
-        public HostThemeManagerTests()
-        {
-            subContext = Substitute.For<IHttpContextAccessor>();
-            subOptions = Substitute.For<IOptions<ThemeOptions<HostTheme>>>();
-        }
+        private IHttpContextAccessor subContext = Substitute.For<IHttpContextAccessor>();
+        private IOptions<ThemeOptions<HostTheme>> subOptions = Substitute.For<IOptions<ThemeOptions<HostTheme>>>();
 
         public void Dispose()
         {
@@ -35,8 +27,13 @@ namespace Ministry.Web.Themes.Tests
         public void CanGetAThemeFromAHost(string expectedKey, string host, int? port = null)
         {
             subOptions.Value.Returns(BuildOptions());
-            var fakeContext = new DefaultHttpContext();
-            fakeContext.Request.Host = port.HasValue ? new HostString(host, port.Value) : new HostString(host);
+            var fakeContext = new DefaultHttpContext
+            {
+                Request =
+                {
+                    Host = port.HasValue ? new HostString(host, port.Value) : new HostString(host)
+                }
+            };
             subContext.HttpContext.Returns(fakeContext);
 
             var objUt = new HostThemeManager(subOptions, subContext);
@@ -49,8 +46,13 @@ namespace Ministry.Web.Themes.Tests
         public void WillGetADefaultThemeIfNoHostFound()
         {
             subOptions.Value.Returns(BuildOptions());
-            var fakeContext = new DefaultHttpContext();
-            fakeContext.Request.Host = new HostString("cabbages.com");
+            var fakeContext = new DefaultHttpContext
+            {
+                Request =
+                {
+                    Host = new HostString("cabbages.com")
+                }
+            };
             subContext.HttpContext.Returns(fakeContext);
 
             var objUt = new HostThemeManager(subOptions, subContext);
@@ -63,8 +65,13 @@ namespace Ministry.Web.Themes.Tests
         public void WillThrowAnExceptionIfNoHostFoundOrDefaultThemeDataProvided()
         {
             subOptions.Value.Returns(new ThemeOptions<HostTheme>());
-            var fakeContext = new DefaultHttpContext();
-            fakeContext.Request.Host = new HostString("cabbages.com");
+            var fakeContext = new DefaultHttpContext
+            {
+                Request =
+                {
+                    Host = new HostString("cabbages.com")
+                }
+            };
             subContext.HttpContext.Returns(fakeContext);
 
             var objUt = new HostThemeManager(subOptions, subContext);

@@ -1,8 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Ministry.Web.Themes
 {
     /// <summary>
     /// Manages Theming
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global", Justification = "Library")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Library")]
     public interface IThemeManager
     {
         /// <summary>

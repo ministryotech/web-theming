@@ -6,7 +6,9 @@ namespace Ministry.Web.Themes
     /// <summary>
     /// Available Themes
     /// </summary>
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "Options")]
+    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "Options")]
+    [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "Options")]
     public class ThemeOptions<TTheme>
         where TTheme : class, IKeyedTheme
     {
